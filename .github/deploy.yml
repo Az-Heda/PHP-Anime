@@ -19,3 +19,21 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+  deploy:
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    enviroment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
