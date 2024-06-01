@@ -1,2 +1,2 @@
 <?php
-echo "Funziona?";
+echo "Funziona??";
